@@ -48,7 +48,7 @@ def load_user(user_id):
 def admin_only(f):
     @wraps(f)
     def deco_func(*args, **kwargs):
-        if not current_user.is_admin:
+        if not current_user.id == 1:
             flash("You are not logged in as admin. Log in as admin to access.")
             return redirect('login')
         return f(*args, **kwargs)
